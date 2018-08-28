@@ -4,9 +4,9 @@
         <div id='character' style='position:absolute; top:100px; left:450px; background-image: url("img/down1.png"); width:59px; height:86px;'></div>
     </div>
     <script type="text/javascript">
-		var leftValue = 450, topValue = 100, walkValue = 1;
+		var leftValue = 450, topValue = 100, walkValue = 1, direction = "top";
 
-		const MAX_X = 500, MAX_Y = 500, MIN_X = 0, MIN_Y = 0;
+		const MAX_X = 500, MAX_Y = 500, MIN_X = 0, MIN_Y = 0, STEP_SIZE = 10;
 
 		function update() {
 			if (leftValue < MIN_X) {
@@ -21,7 +21,8 @@
 			}
 
     		document.getElementById("character").style.left = leftValue+"px";
-    		document.getElementById("character").style.top = topValue+"px";
+			document.getElementById("character").style.top = topValue + "px";
+			document.getElementById("character").style.backgroundImage = "url('img/" + direction + walkValue + ".png')";
     	}
 
     	document.onkeydown = function(e){
@@ -33,20 +34,20 @@
 				walkValue = 1;
 			}
     		if(e.keyCode == 37) { // LEFT
-				leftValue = leftValue - 10;
-				document.getElementById("character").style.backgroundImage = "url('img/left" + walkValue + ".png')";
+				leftValue = leftValue - STEP_SIZE;
+				direction = "left";
     		}
     		else if (e.keyCode == 39) { // RIGHT
-				leftValue = leftValue + 10;
-				document.getElementById("character").style.backgroundImage = "url('img/right" + walkValue + ".png')";
+				leftValue = leftValue + STEP_SIZE;
+				direction = "right";
 			}
 			else if (e.keyCode == 38) { // UP
-				topValue = topValue - 10;
-				document.getElementById("character").style.backgroundImage = "url('img/top" + walkValue + ".png')";
+				topValue = topValue - STEP_SIZE;
+				direction = "top";
 			}
 			else if (e.keyCode == 40) { // DOWN
-				topValue = topValue + 10;
-				document.getElementById("character").style.backgroundImage = "url('img/down" + walkValue + ".png')";
+				topValue = topValue + STEP_SIZE;
+				direction = "down";
 			}
     		// ...
     		update();
