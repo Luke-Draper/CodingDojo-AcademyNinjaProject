@@ -1,12 +1,30 @@
-﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>academy_ninja</title>
-    <link href="css/default.css" rel="stylesheet" />
-</head>
 <body>
-    <div>Content goes here!</div>
-    <script src="js/main.js"></script>
+	<div id='background'>
+        <div id='character' style='position:absolute; top:100px; left:450px; background-image: url("img/down1.png"); width:59px; height:86px;'></div>
+    </div>
+    <script type="text/javascript">
+	    var leftValue = 450, topValue = 100;
+
+    	function update(){
+    		document.getElementById("character").style.left = leftValue+"px";
+    		document.getElementById("character").style.top = topValue+"px";
+    	}
+
+    	document.onkeydown = function(e){
+    		console.log(e);
+    		if(e.keyCode == 37) { // LEFT
+    			leftValue = leftValue - 10;
+    		}
+    		else if (e.keyCode == 39) { // RIGHT
+    			leftValue = leftValue + 10;    		
+    		}
+    		else if (e.keyCode == 40) { // DOWN
+				topValue = topValue + 10;
+    		}
+    		// ...
+    		update();
+    	}
+    </script>
 </body>
 </html>
