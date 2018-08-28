@@ -6,7 +6,20 @@
     <script type="text/javascript">
 	    var leftValue = 450, topValue = 100;
 
-    	function update(){
+		const MAX_X = 500, MAX_Y = 500, MIN_X = 0, MIN_Y = 0;
+
+		function update() {
+			if (leftValue < MIN_X) {
+				leftValue = MIN_X;
+			} else if (leftValue > MAX_X) {
+				leftValue = MAX_X;
+			}
+			if (topValue < MIN_Y) {
+				topValue = MIN_Y;
+			} else if (topValue > MAX_Y) {
+				topValue = MAX_Y;
+			}
+
     		document.getElementById("character").style.left = leftValue+"px";
     		document.getElementById("character").style.top = topValue+"px";
     	}
@@ -17,11 +30,14 @@
     			leftValue = leftValue - 10;
     		}
     		else if (e.keyCode == 39) { // RIGHT
-    			leftValue = leftValue + 10;    		
-    		}
-    		else if (e.keyCode == 40) { // DOWN
+    			leftValue = leftValue + 10;
+			}
+			else if (e.keyCode == 38) { // UP
+				topValue = topValue - 10;
+			}
+			else if (e.keyCode == 40) { // DOWN
 				topValue = topValue + 10;
-    		}
+			}
     		// ...
     		update();
     	}
