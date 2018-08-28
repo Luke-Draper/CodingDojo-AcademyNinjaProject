@@ -42,9 +42,11 @@
 			}
 			else if (e.keyCode == 38) { // UP
 				topValue = topValue - 10;
+				document.getElementById("character").style.backgroundImage = "url('img/top" + walkValue + ".png')";
 			}
 			else if (e.keyCode == 40) { // DOWN
 				topValue = topValue + 10;
+				document.getElementById("character").style.backgroundImage = "url('img/down" + walkValue + ".png')";
 			}
     		// ...
     		update();
